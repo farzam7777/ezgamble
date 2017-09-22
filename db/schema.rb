@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922115836) do
+ActiveRecord::Schema.define(version: 20170922124226) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 20170922115836) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.string "title"
+    t.string "preview_file_name"
+    t.string "preview_content_type"
+    t.integer "preview_file_size"
+    t.datetime "preview_updated_at"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
