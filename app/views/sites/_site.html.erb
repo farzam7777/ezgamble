@@ -3,7 +3,7 @@
 
   <div class="product__img">
     <div class="product__img-holder">
-      <img src="assets/images/samples/product-img1.png" alt="">
+      <%= image_tag site.preview.url(:medium), style: 'height: 326px' %>
     </div>
   </div>
 
@@ -12,7 +12,7 @@
     <header class="product__header">
       <div class="product__header-inner">
         <span class="product__category"> <%= site.category.title %> </span>
-        <h2 class="product__title"><a href="shop-product.html"> <%= site.title %> </a></h2>
+        <h2 class="product__title"><a href="<%= site_path(site) %>"> <%= site.title %> </a></h2>
         <div class="product__ratings">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -24,12 +24,12 @@
     </header>
 
     <div class="product__excerpt">
-      <%= site.description %>
+      <%= truncate(site.description, length: 150) %>
     </div>
 
     <footer class="product__footer">
       <!-- <a href="#" class="btn btn-default btn-single-icon product__wish"><i class="icon-heart"></i></a> -->
-      <a href="#" class="btn btn-default btn-single-icon product__view"><i class="icon-eye"></i></a>
+      <a href="<%= site_path(site) %>" class="btn btn-default btn-single-icon product__view"><i class="icon-eye"></i></a>
     </footer>
   </div>
 </li>

@@ -1,2 +1,190 @@
-<h1>Sites#show</h1>
-<p>Find me in app/views/sites/show.html.erb</p>
+<!-- Content
+================================================== -->
+<div class="site-content">
+  <div class="container">
+
+    <!-- Single Product -->
+    <div class="products products--list products--list-lg">
+
+      <div class="product__item product__item--color-1 card">
+
+        <div class="">
+          <div class="product__img-holder">
+            <%= image_tag @site.preview.url, style: 'height: 400px' %>
+          </div>
+        </div>
+
+        <div class="product__content card__content">
+
+          <header class="product__header">
+            <div class="product__header-inner">
+              <span class="product__category"> <%= @site.category.title %> </span>
+              <h2 class="product__title" style="margin-bottom: 2%;"> <%= @site.title %> </h2>
+              <span class="product__category"> <%= link_to 'visit', @site.link, style: 'margin-left: 2%;text-decoration: underline', target: '_blank' %> </span>
+              <div class="product__ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star empty"></i>
+              </div>
+            </div>
+          </header>
+
+          <div class="product__excerpt">
+            <h6>Description</h6>
+            <%= truncate(@site.description, length: 90) %>
+          </div>
+
+          <form action="#" class="product__params">
+            <div class="product__param-item product__param-item--color">
+              <label>Trust</label>
+              <div class="product__ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star empty"></i>
+              </div>
+            </div>
+            <div class="product__param-item product__param-item--size">
+              <label class="control-label" for="select-size">Performance</label>
+              <div class="product__ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star empty"></i>
+              </div>
+            </div>
+            <div class="product__param-item product__param-item--quantity">
+              <label>Features</label>
+              <div class="product__ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star empty"></i>
+              </div>
+            </div>
+          </form>
+
+          <footer class="product__footer">
+            <!-- <a href="#" class="btn btn-default btn-single-icon product__wish"><i class="icon-heart"></i></a> -->
+          </footer>
+        </div>
+      </div>
+
+    </div>
+    <!-- Single Product / End -->
+
+    <!-- Single Product Tabbed Content -->
+    <div class="product-tabs card card--xlg">
+    
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-justified nav-product-tabs">
+        <li role="presentation" class="active"><a href="#tab-desciption" role="tab" data-toggle="tab"><small>Product</small>Full Description</a></li>
+        <li role="presentation"><a href="#tab-reviews" role="tab" data-toggle="tab"><small>Sites</small>User Reviews (3)</a></li>
+      </ul>
+    
+      <!-- Tab panes -->
+      <div class="tab-content card__content">
+    
+        <!-- Tab: Description -->
+        <div role="tabpanel" class="tab-pane fade in active" id="tab-desciption">
+        
+          <header class="product-tabs__header">
+            <h2>Product Full Description</h2>
+          </header>
+          
+          <p> <%= @site.description %> </p>
+          
+        </div>
+        <!-- Tab: Description / End -->
+    
+        <!-- Tab: Reviews -->
+        <div class="tab-pane fade" id="tab-reviews">
+    
+          <section class="product-tabs__section">
+          
+            <header class="product-tabs__header">
+              <h2>3 User Reviews</h2>
+            </header>
+            
+            <!-- Product Reviews -->
+            <ul class="comments comments--left-thumb">
+              <li class="comments__item">
+                <div class="comments__inner">
+                  <header class="comment__header">
+                    <div class="comment__author">
+                      <figure class="comment__author-avatar">
+                        <%= image_tag 'images/samples/avatar-10.jpg' %>
+                      </figure>
+                      <div class="comment__author-info">
+                        <h5 class="comment__author-name">Jennifer Stevens</h5>
+                        <time class="comment__post-date" datetime="2016-08-23">5 hours ago</time>
+                      </div>
+                    </div>
+                  </header>
+                  <div class="comment__body">
+                    <h4 class="comment__title">Incredible Sneakers!!</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis eder nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- Product Reviews / End -->
+            
+          
+          </section>
+          
+          <section class="product-tabs__section">
+          
+            <header class="product-tabs__header">
+              <h2>Write a Review</h2>
+            </header>
+            
+            <!-- Reviews Form -->
+            <form action="#" class="reviews-form">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="control-label" for="review-title">Review Title</label>
+                    <input type="text" id="review-title" name="review-title" class="form-control">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="textarea-review">Your Review</label>
+                    <textarea name="textarea-review" id="textarea-review" rows="5" class="form-control"></textarea>
+                  </div>
+                  
+                  <div class="form-group form-group--submit">
+                    <button type="submit" class="btn btn-default btn-block btn-lg">Post Your Review</button>
+                  </div>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+              
+            </form>
+            <!-- Reviews Form / End -->
+            
+          
+          </section>
+          
+    
+        </div>
+        <!-- Tab: Reviews / End -->
+      </div>
+    
+    </div>
+    <!-- Single Product Tabbed Content / End -->
+
+  </div>
+</div>
+
+<!-- Content / End -->
+
+<%= javascript_include_tag 'jquery/jquery.min.js', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'js/core-min.js', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'js/custom.js', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'js/init.js', 'data-turbolinks-track': 'reload' %>
