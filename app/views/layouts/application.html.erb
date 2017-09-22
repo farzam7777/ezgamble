@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reviews</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="template-basketball">
+    <div class="site-wrapper clearfix">
+      <div class="site-overlay"></div>
+      
+      <%= render "notifications" %>
+      
+      <%= render 'header' %>
+      
+      <%= render 'pushy_panel' %>
+      
+      <!-- <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p> -->
+      
+      <%= yield %>
+      
+      <%= render 'footer' %>
+      
+    </div>
+  </body>
+  
+</html>
