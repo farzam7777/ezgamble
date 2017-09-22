@@ -15,17 +15,5 @@ Rails.application.routes.draw do
     config.home_page = 'index'  
   end
   
-  resources :users do
-    collection do
-      post 'registration'
-    end
-    
-    collection do
-      post 'login'
-    end
-    
-    member do
-      get 'logout'
-    end
-  end
+  resources :sites
 end

@@ -1,0 +1,36 @@
+<!-- One Product Template  -->
+<li class="product__item product__item--color-1 card">
+
+  <div class="product__img">
+    <div class="product__img-holder">
+      <img src="assets/images/samples/product-img1.png" alt="">
+    </div>
+  </div>
+
+  <div class="product__content card__content">
+
+    <header class="product__header">
+      <div class="product__header-inner">
+        <span class="product__category"> <%= site.category.title %> </span>
+        <h2 class="product__title"><a href="shop-product.html"> <%= site.title %> </a></h2>
+        <div class="product__ratings">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star empty"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="product__excerpt">
+      <%= site.description %>
+    </div>
+
+    <footer class="product__footer">
+      <!-- <a href="#" class="btn btn-default btn-single-icon product__wish"><i class="icon-heart"></i></a> -->
+      <a href="#" class="btn btn-default btn-single-icon product__view"><i class="icon-eye"></i></a>
+    </footer>
+  </div>
+</li>
+<!-- One Product Template / End -->

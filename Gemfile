@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'high_voltage', '~> 3.0'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
+gem 'link_thumbnailer'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
