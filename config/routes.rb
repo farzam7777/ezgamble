@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  default_url_options host: "localhost:3000"
+  default_url_options host: "https://ezgamble.herokuapp.com/"
   devise_for :users
   HighVoltage.configure do |config|
     config.route_drawer = HighVoltage::RouteDrawers::Root
