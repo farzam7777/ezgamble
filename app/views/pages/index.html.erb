@@ -1,3 +1,5 @@
+<% @top_sites = Site.all.order("rating desc").limit(3) %>
+
 <!-- Hero Unit
   ================================================== -->
 <div class="hero-unit">
@@ -30,156 +32,40 @@
         <!-- Lates News -->
         <div class="card card--clean">
           <header class="card__header card__header--has-btn">
-            <h4>Latest News</h4>
-            <a href="#" class="btn btn-default btn-outline btn-xs card-header__button">See All Posts</a>
+            <h4>Top Rated Sites</h4>
+            <a href="<%= sites_path %>" class="btn btn-default btn-outline btn-xs card-header__button">See All Sites</a>
           </header>
           <div class="card__content">
             <!-- Posts List -->
             <div class="posts posts--cards posts--cards-thumb-left post-list">
-
-              <div class="post-list__item">
-                <div class="posts__item posts__item--card posts__item--category-1 card">
-                  <figure class="posts__thumb">
-                    <a href="#"><%= image_tag "images/samples/post-img9.jpg" %></a>
-                    <a href="#" class="posts__cta"></a>
-                  </figure>
-                  <div class="posts__inner">
-                    <div class="card__content">
-                      <div class="posts__cat">
-                        <span class="label posts__cat-label">The Team</span>
-                      </div>
-                      <h6 class="posts__title"><a href="#">The team is taking a summer vacation on Woody Valley</a></h6>
-                      <time datetime="2016-08-17" class="posts__date">August 17th, 2016</time>
-                      <div class="posts__excerpt">
-                        Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </div>
-                    </div>
-                    <footer class="posts__footer card__footer">
-                      <div class="post-author">
-                        <figure class="post-author__avatar">
-                          <%= image_tag "images/samples/avatar-2.jpg" %>
-                        </figure>
-                        <div class="post-author__info">
-                          <h4 class="post-author__name">Jessica Hoops</h4>
+              
+              <% @top_sites.each do |site| %>
+                <div class="post-list__item">
+                  <div class="posts__item posts__item--card posts__item--category-1 card">
+                    <figure class="posts__thumb">
+                      <a href="<%= site_path(site) %>"> <%= image_tag site.preview.url(:medium), style: 'height: 233px' %> </a>
+                      <a href="#" class="posts__cta"></a>
+                    </figure>
+                    <div class="posts__inner">
+                      <div class="card__content">
+                        <div class="posts__cat">
+                          <span class="label posts__cat-label"> <%= site.category.title %> </span>
+                        </div>
+                        <h6 class="posts__title"><a href="#"><%= site.title %></a></h6>
+                        <time datetime="2016-08-17" class="posts__date"><%= time_ago_in_words(site.created_at) %></time>
+                        <div class="posts__excerpt">
+                          <%= truncate(site.description, length: 70) %>
                         </div>
                       </div>
-                      <ul class="post__meta meta">
-                        <li class="meta__item meta__item--views">2369</li>
-                        <li class="meta__item meta__item--likes"><a href="#"><i class="meta-like icon-heart"></i> 530</a></li>
-                        <li class="meta__item meta__item--comments"><a href="#">18</a></li>
-                      </ul>
-                    </footer>
-                  </div>
-                </div>
-              </div>
-
-              <div class="post-list__item">
-                <div class="posts__item posts__item--card posts__item--category-1 card">
-                  <figure class="posts__thumb">
-                    <a href="#"><%= image_tag "images/samples/post-img10.jpg" %></a>
-                    <a href="#" class="posts__cta"></a>
-                  </figure>
-                  <div class="posts__inner">
-                    <div class="card__content">
-                      <div class="posts__cat">
-                        <span class="label posts__cat-label">The Team</span>
-                      </div>
-                      <h6 class="posts__title"><a href="#">Jeremy Rittersen was called to be in the National Team</a></h6>
-                      <time datetime="2016-08-16" class="posts__date">August 16th, 2016</time>
-                      <div class="posts__excerpt">
-                        Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </div>
+                      <footer class="posts__footer card__footer">
+                        <ul class="post__meta meta">
+                          <li class="meta__item meta__item--comments"><a href="#"><%= site.reviews.count %></a></li>
+                        </ul>
+                      </footer>
                     </div>
-                    <footer class="posts__footer card__footer">
-                      <div class="post-author">
-                        <figure class="post-author__avatar">
-                          <%= image_tag "images/samples/avatar-1.jpg" %>
-                        </figure>
-                        <div class="post-author__info">
-                          <h4 class="post-author__name">James Spiegel</h4>
-                        </div>
-                      </div>
-                      <ul class="post__meta meta">
-                        <li class="meta__item meta__item--views">2369</li>
-                        <li class="meta__item meta__item--likes"><a href="#"><i class="meta-like icon-heart"></i> 530</a></li>
-                        <li class="meta__item meta__item--comments"><a href="#">18</a></li>
-                      </ul>
-                    </footer>
                   </div>
                 </div>
-              </div>
-
-              <div class="post-list__item">
-                <div class="posts__item posts__item--card posts__item--category-1 card">
-                  <figure class="posts__thumb">
-                    <a href="#"><%= image_tag "images/samples/post-img11.jpg" %></a>
-                    <a href="#" class="posts__cta"></a>
-                  </figure>
-                  <div class="posts__inner">
-                    <div class="card__content">
-                      <div class="posts__cat">
-                        <span class="label posts__cat-label">The Team</span>
-                      </div>
-                      <h6 class="posts__title"><a href="#">Alchemists New Stadium is gonna be ready in September 2017</a></h6>
-                      <time datetime="2016-08-15" class="posts__date">August 15th, 2016</time>
-                      <div class="posts__excerpt">
-                        Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </div>
-                    </div>
-                    <footer class="posts__footer card__footer">
-                      <div class="post-author">
-                        <figure class="post-author__avatar">
-                          <%= image_tag "images/samples/avatar-2.jpg" %>
-                        </figure>
-                        <div class="post-author__info">
-                          <h4 class="post-author__name">Jessica Hoops</h4>
-                        </div>
-                      </div>
-                      <ul class="post__meta meta">
-                        <li class="meta__item meta__item--views">2369</li>
-                        <li class="meta__item meta__item--likes"><a href="#"><i class="meta-like icon-heart"></i> 530</a></li>
-                        <li class="meta__item meta__item--comments"><a href="#">18</a></li>
-                      </ul>
-                    </footer>
-                  </div>
-                </div>
-              </div>
-
-              <div class="post-list__item">
-                <div class="posts__item posts__item--card posts__item--category-1 card">
-                  <figure class="posts__thumb">
-                    <a href="#"><%= image_tag "images/samples/post-img14-m.jpg" %></a>
-                    <a href="#" class="posts__cta"></a>
-                  </figure>
-                  <div class="posts__inner">
-                    <div class="card__content">
-                      <div class="posts__cat">
-                        <span class="label posts__cat-label">The Team</span>
-                      </div>
-                      <h6 class="posts__title"><a href="#">The Championship Final will be be played in San Francisco</a></h6>
-                      <time datetime="2016-08-18" class="posts__date">August 18th, 2016</time>
-                      <div class="posts__excerpt">
-                        Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </div>
-                    </div>
-                    <footer class="posts__footer card__footer">
-                      <div class="post-author">
-                        <figure class="post-author__avatar">
-                          <%= image_tag "images/samples/avatar-2.jpg" %>
-                        </figure>
-                        <div class="post-author__info">
-                          <h4 class="post-author__name">Jessica Hoops</h4>
-                        </div>
-                      </div>
-                      <ul class="post__meta meta">
-                        <li class="meta__item meta__item--views">2369</li>
-                        <li class="meta__item meta__item--likes"><a href="#"><i class="meta-like icon-heart"></i> 530</a></li>
-                        <li class="meta__item meta__item--comments"><a href="#">18</a></li>
-                      </ul>
-                    </footer>
-                  </div>
-                </div>
-              </div>
+              <% end %>
 
             </div>
             <!-- Posts List / End -->

@@ -22,7 +22,7 @@ class SitesController < ApplicationController
       end
     end
     
-    @result = @site.get_site_avg_rating(@site)
+    @result = @site.rating
     @review = Review.new
   end
   
@@ -44,5 +44,6 @@ class SitesController < ApplicationController
     
     @site = Site.find(params[:id])
     @result = @site.get_site_avg_rating(@site)
+    @site.update(rating: @result)
   end
 end

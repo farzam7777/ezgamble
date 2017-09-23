@@ -15,9 +15,9 @@ class Site < ApplicationRecord
   validates :description, length: { minimum: 90 }
   
   def get_site_avg_rating(site)
-    trusts = site.trusts.average(:rating)
-    performances = site.performances.average(:rating)
-    features = site.features.average(:rating)
+    trusts = site.trusts.average(:rating).to_i
+    performances = site.performances.average(:rating).to_i
+    features = site.features.average(:rating).to_i
     
     result = ( ( features + performances + trusts ) / 3 ).to_i
   end
