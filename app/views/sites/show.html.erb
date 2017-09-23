@@ -10,7 +10,7 @@
 
         <div class="">
           <div class="product__img-holder">
-            <%= image_tag @site.preview.url, style: 'height: 400px' %>
+            <%= image_tag @site.preview.url, style: 'height: 491px' %>
           </div>
         </div>
 
@@ -22,11 +22,19 @@
               <h2 class="product__title" style="margin-bottom: 2%;"> <%= @site.title %> </h2>
               <span class="product__category"> <%= link_to 'visit', @site.link, style: 'margin-left: 2%;text-decoration: underline', target: '_blank' %> </span>
               <div class="product__ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star empty"></i>
+                <% 
+                  @count = 5 - @result 
+                  @temp = 1
+                %>
+                <% @result.times do %>
+                  <%= link_to '', '', class: 'fa fa-star ' %>
+                  <% @temp = @temp + 1 %>
+                <% end %>
+                
+                <% @count.times do %>
+                  <%= link_to '', '', class: 'fa fa-star empty' %>
+                  <% @temp = @temp + 1 %>
+                <% end %>
               </div>
             </div>
           </header>
@@ -36,39 +44,66 @@
             <%= truncate(@site.description, length: 90) %>
           </div>
 
-          <form action="#" class="product__params">
-            <div class="product__param-item product__param-item--color">
-              <label>Trust</label>
-              <div class="product__ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star empty"></i>
+          <% if user_signed_in? %>
+            <form action="#" class="product__params">
+              <div class="product__param-item product__param-item--color">
+                <label>Trust</label>
+                <div class="product__ratings">
+                  <% 
+                    @count = 5 - @trust_rating 
+                    @temp = 1
+                  %>
+                  <% @trust_rating.times do %>
+                    <%= link_to '', rating_site_path(@site, type: 'trust', star: @temp), class: 'fa fa-star ' %>
+                    <% @temp = @temp + 1 %>
+                  <% end %>
+                  
+                  <% @count.times do %>
+                    <%= link_to '', rating_site_path(@site, type: 'trust', star: @temp), class: 'fa fa-star empty' %>
+                    <% @temp = @temp + 1 %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-            <div class="product__param-item product__param-item--size">
-              <label class="control-label" for="select-size">Performance</label>
-              <div class="product__ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star empty"></i>
+              <div class="product__param-item product__param-item--size">
+                <label class="control-label" for="select-size">Performance</label>
+                <div class="product__ratings">
+                  <% 
+                    @count = 5 - @performance_rating 
+                    @temp = 1
+                  %>
+                  <% @performance_rating.times do %>
+                    <%= link_to '', rating_site_path(@site, type: 'performance', star: @temp), class: 'fa fa-star ' %>
+                    <% @temp = @temp + 1 %>
+                  <% end %>
+                  
+                  <% @count.times do %>
+                    <%= link_to '', rating_site_path(@site, type: 'performance', star: @temp), class: 'fa fa-star empty' %>
+                    <% @temp = @temp + 1 %>
+                  <% end %>   
+                </div>
               </div>
-            </div>
-            <div class="product__param-item product__param-item--quantity">
-              <label>Features</label>
-              <div class="product__ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star empty"></i>
+              <div class="product__param-item product__param-item--quantity">
+                <label>Features</label>
+                <div class="product__ratings">
+                  <% 
+                    @count = 5 - @feature_rating 
+                    @temp = 1
+                  %>
+                  <% @feature_rating.times do %>
+                    <%= link_to '', rating_site_path(@site, type: 'feature', star: @temp), class: 'fa fa-star ' %>
+                    <% @temp = @temp + 1 %>
+                  <% end %>
+                  
+                  <% @count.times do %>
+                    <%= link_to '', rating_site_path(@site, type: 'feature', star: @temp), class: 'fa fa-star empty' %>
+                    <% @temp = @temp + 1 %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          </form>
-
+            </form>
+          <% else %>
+            <p> Login to record your ratings. </p>
+          <% end %>
           <footer class="product__footer">
             <!-- <a href="#" class="btn btn-default btn-single-icon product__wish"><i class="icon-heart"></i></a> -->
           </footer>

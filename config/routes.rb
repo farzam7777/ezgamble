@@ -15,5 +15,9 @@ Rails.application.routes.draw do
     config.home_page = 'index'  
   end
   
-  resources :sites
+  resources :sites do
+    member do
+      get 'rating'
+    end
+  end
 end

@@ -1,5 +1,8 @@
 class Site < ApplicationRecord
   belongs_to :category
+  has_many :features
+  has_many :performances
+  has_many :trusts
   
   has_attached_file :preview, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :preview, content_type: /\Aimage\/.*\z/
@@ -9,4 +12,12 @@ class Site < ApplicationRecord
   validates_presence_of :preview
   validates_presence_of :description
   validates :description, length: { minimum: 90 }
+  
+  def get_site_avg_rating(site)
+    trusts = site.trusts.average(:rating)
+    performances = site.performances.average(:rating)
+    features = site.features.average(:rating)
+    
+    result = ( ( features + performances + trusts ) / 3 ).to_i
+  end
 end

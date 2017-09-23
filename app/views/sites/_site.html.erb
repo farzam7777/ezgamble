@@ -1,9 +1,9 @@
 <!-- One Product Template  -->
 <li class="product__item product__item--color-1 card">
 
-  <div class="product__img">
+  <div class="">
     <div class="product__img-holder">
-      <%= image_tag site.preview.url(:medium), style: 'height: 326px' %>
+      <%= image_tag site.preview.url(:medium), style: 'height: 300px' %>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
     </header>
 
     <div class="product__excerpt">
-      <%= truncate(site.description, length: 150) %>
+      <%= truncate(site.description, length: 90) %>
     </div>
 
     <footer class="product__footer">
