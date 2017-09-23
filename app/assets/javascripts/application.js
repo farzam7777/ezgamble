@@ -13,11 +13,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-
-function showModal() {
-    $("#myModal").modal({backdrop: true});
-}
-
-function hideModal() {
-    $("#myModal").modal('hide');
-}

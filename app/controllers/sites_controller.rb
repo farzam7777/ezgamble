@@ -4,7 +4,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.includes(:category).find(params[:id])
+    @site = Site.includes(:category, :reviews).find(params[:id])
     if user_signed_in?
       @trust_rating = Trust.where(user_id: current_user.id, site_id: params[:id]).pluck(:rating)[0]
       if !@trust_rating.present? 
@@ -23,6 +23,7 @@ class SitesController < ApplicationController
     end
     
     @result = @site.get_site_avg_rating(@site)
+    @review = Review.new
   end
   
   def rating

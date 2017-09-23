@@ -19,6 +19,7 @@ gem 'high_voltage', '~> 3.0'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem "paperclip", "~> 5.0.0"
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

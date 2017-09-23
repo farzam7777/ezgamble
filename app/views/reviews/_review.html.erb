@@ -1,0 +1,20 @@
+<li class="comments__item" id="review_row_<%= review.id %>">
+  <div class="comments__inner">
+    <header class="comment__header">
+      <div class="comment__author">
+        <figure class="comment__author-avatar">
+          <%= image_tag 'images/samples/avatar-10.jpg' %>
+        </figure>
+        <div class="comment__author-info">
+          <h5 class="comment__author-name"><%= review.user.email %></h5>
+          <time class="comment__post-date" datetime="2016-08-23"><%= time_ago_in_words( review.created_at ) %> ago</time>
+        </div>
+      </div>
+    </header>
+    <div class="comment__body">
+      <h4 class="comment__title"> <%= review.title %> </h4>
+       <p style="color: grey;"> <%= review.content %> </p>  
+       <p style="color: black"> <%= link_to 'Delete', review, method: :delete, remote: true %> </p>
+    </div>
+  </div> <hr style="margin-top: 0px !important">
+</li> 

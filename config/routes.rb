@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-
-  get 'reviews/new'
-
-  get 'reviews/edit'
-
-  get 'reviews/show'
-
-  get 'sites/index'
-
-  get 'sites/show'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   default_url_options host: "localhost:3000"
@@ -28,4 +16,6 @@ Rails.application.routes.draw do
       get 'rating'
     end
   end
+  
+  resources :reviews
 end

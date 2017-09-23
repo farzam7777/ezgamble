@@ -1,0 +1,21 @@
+<%= simple_form_for @review, input_html: { class: 'reviews-form' }, remote: true do |f| %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <%= f.input :title, label_html: { class: 'control-label' }, 
+        input_html: { class: 'form-control' } %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.input :content, label_html: { class: 'control-label' }, class: 'form-control', input_html: { rows: 5 }, as: :text %>
+      </div>
+      
+      <%= f.hidden_field :site_id, value: @site.id %>
+      
+      <div class="form-group form-group--submit">
+        <%= f.button :submit, class: 'btn btn-default btn-block btn-lg' %>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+<% end %>

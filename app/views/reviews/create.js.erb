@@ -1,0 +1,11 @@
+$("#reviews").append("<%= j render @review %>")
+$("#review_row_<%= @review.id %>").hide().fadeIn(500)
+$("#success-note").html("Your review is Recorded Successfully.")
+$("#success-note").fadeOut(3000, function(){
+  $(this).remove()
+})
+$("#review_title").val("")
+$("#review_content").val("")
+var count = $("#reviews-count").html()
+$("#reviews-count").html(parseInt(count) + 1)
+$("#top-reviews-count").html(parseInt(count) + 1)

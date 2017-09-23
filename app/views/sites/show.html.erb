@@ -119,7 +119,7 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified nav-product-tabs">
         <li role="presentation" class="active"><a href="#tab-desciption" role="tab" data-toggle="tab"><small>Product</small>Full Description</a></li>
-        <li role="presentation"><a href="#tab-reviews" role="tab" data-toggle="tab"><small>Sites</small>User Reviews (3)</a></li>
+        <li role="presentation"><a href="#tab-reviews" role="tab" data-toggle="tab"><small>Sites</small>User Reviews <span id="top-reviews-count"> (<%= @site.reviews.count %>) </span> </a></li>
       </ul>
     
       <!-- Tab panes -->
@@ -143,33 +143,16 @@
           <section class="product-tabs__section">
           
             <header class="product-tabs__header">
-              <h2>3 User Reviews</h2>
+              <h2> <span id="reviews-count"> <%= @site.reviews.count %> </span> User Reviews</h2>
             </header>
             
             <!-- Product Reviews -->
-            <ul class="comments comments--left-thumb">
-              <li class="comments__item">
-                <div class="comments__inner">
-                  <header class="comment__header">
-                    <div class="comment__author">
-                      <figure class="comment__author-avatar">
-                        <%= image_tag 'images/samples/avatar-10.jpg' %>
-                      </figure>
-                      <div class="comment__author-info">
-                        <h5 class="comment__author-name">Jennifer Stevens</h5>
-                        <time class="comment__post-date" datetime="2016-08-23">5 hours ago</time>
-                      </div>
-                    </div>
-                  </header>
-                  <div class="comment__body">
-                    <h4 class="comment__title">Incredible Sneakers!!</h4>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis eder nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </div>
-                </div>
-              </li>
+            <ul class="comments comments--left-thumb" id="reviews">
+              <%= render @site.reviews %>
             </ul>
+            <p style="color: green" id="success-note"> </p>
             <!-- Product Reviews / End -->
-            
+            <div id="myModal" class="modal fade" role="dialog"> </div>
           
           </section>
           
@@ -180,27 +163,7 @@
             </header>
             
             <!-- Reviews Form -->
-            <form action="#" class="reviews-form">
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group">
-                    <label class="control-label" for="review-title">Review Title</label>
-                    <input type="text" id="review-title" name="review-title" class="form-control">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label class="control-label" for="textarea-review">Your Review</label>
-                    <textarea name="textarea-review" id="textarea-review" rows="5" class="form-control"></textarea>
-                  </div>
-                  
-                  <div class="form-group form-group--submit">
-                    <button type="submit" class="btn btn-default btn-block btn-lg">Post Your Review</button>
-                  </div>
-                </div>
-                <div class="col-md-4"></div>
-              </div>
-              
-            </form>
+            <%= render 'reviews/form' %> 
             <!-- Reviews Form / End -->
             
           

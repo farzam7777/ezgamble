@@ -3,7 +3,8 @@ class Site < ApplicationRecord
   has_many :features
   has_many :performances
   has_many :trusts
-  
+  has_many :reviews
+    
   has_attached_file :preview, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :preview, content_type: /\Aimage\/.*\z/
   

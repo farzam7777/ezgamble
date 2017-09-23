@@ -1,0 +1,6 @@
+$("#review_row_<%= @review.id %>").fadeOut(600, function(){
+  $(this).remove()
+})
+var count = $("#reviews-count").html()
+$("#reviews-count").html(parseInt(count) - 1)
+$("#top-reviews-count").html(parseInt(count) - 1)
