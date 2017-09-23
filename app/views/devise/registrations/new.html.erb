@@ -18,6 +18,17 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
         <div class="field form-group">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="field form-group">
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>

@@ -21,9 +21,10 @@
         <% if !user_signed_in? %>
           <li class="nav-account__item"><a href="<%= new_user_session_path %>">Login / Register</a></li>
         <% else %>
-          <li class="nav-account__item"> <%= link_to current_user.email, '#' %> / <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
+          <li class="nav-account__item"> <%= image_tag current_user.image.url(:thumb), class: 'img-circle', style: 'width: 40px' %> </li>
+          <li class="nav-account__item"> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
+          <li class="nav-account__item"> <%= link_to current_user.email, '#' %> (Go to Profile) </li>
         <% end %>
-        <!-- <li class="nav-account__item nav-account__item--wishlist"><a href="shop-wishlist.html">Wishlist <span class="highlight">8</span></a></li> -->
         
       </ul>
       <!-- Account Navigation / End -->

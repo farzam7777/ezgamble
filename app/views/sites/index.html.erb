@@ -1,3 +1,5 @@
+<% @top_sites = Site.all.order("rating desc").limit(3) %>
+
 <!-- Page Heading
 ================================================== -->
 <div class="page-heading">
@@ -28,7 +30,7 @@
         <div class="card card--clean">
           <header class="card__header card__header--shop-filter">
             <div class="shop-filter">
-              <h5 class="shop-filter__result">Showing 6 of 98 products</h5>
+              <h2 class="shop-filter__result">All Sites</h2>
               <div class="shop-filter__layout"></div>
             </div>
           </header>
@@ -48,11 +50,7 @@
           <!-- Shop Pagination -->
           <nav class="shop-pagination">
             <ul class="pagination">
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><span>...</span></li>
-              <li><a href="#">16</a></li>
+              <li> <%= paginate @sites, outer_window: 3 %> </li>
             </ul>
           </nav>
           <!-- Shop Pagination / End -->
@@ -68,94 +66,31 @@
         <!-- Widget: Hot Products -->
         <aside class="widget card widget--sidebar widget-products">
           <div class="widget__title card__header">
-            <h4>Hot Products</h4>
+            <h4>Hot Sites</h4>
           </div>
           <div class="widget__content card__content">
             <ul class="products-list">
-              <li class="products-list__item">
-                <figure class="products-list__product-thumb">
-                  <a href="#">
-                    <img src="assets/images/samples/cart-sm-1.jpg" alt="">
-                  </a>
-                </figure>
-                <div class="products-list__inner">
-                  <span class="products-list__product-cat">Sneakers</span>
-                  <h5 class="products-list__product-name"><a href="#">Sundown Sneaker</a></h5>
-                  <div class="products-list__product-ratings">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star empty"></i>
+              <% @top_sites.each do |site| %>
+                <li class="products-list__item">
+                  <figure class="products-list__product-thumb">
+                    <a href="<%= site_path(site) %>">
+                      <%= image_tag site.preview.url(:thumb) %>
+                    </a>
+                  </figure>
+                  <div class="products-list__inner">
+                    <span class="products-list__product-cat"> <%= site.category.title %> </span>
+                    <h5 class="products-list__product-name"><a href="#"> <%= site.title %> </a></h5>
+                    <div class="products-list__product-ratings">
+                      <% site.rating.times do %>
+                        <i class="fa fa-star"></i>
+                      <% end %>
+                    </div>
+                    <div class="products-list__product-sum">
+                      <span class="products-list__product-price"><%= site.reviews.count %> Reviews</span>
+                    </div>
                   </div>
-                  <div class="products-list__product-sum">
-                    <span class="products-list__product-price">$28.00</span>
-                  </div>
-                </div>
-              </li>
-              <li class="products-list__item">
-                <figure class="products-list__product-thumb">
-                  <a href="#">
-                    <img src="assets/images/samples/cart-sm-2.jpg" alt="">
-                  </a>
-                </figure>
-                <div class="products-list__inner">
-                  <span class="products-list__product-cat">Sneakers</span>
-                  <h5 class="products-list__product-name"><a href="#">Atlantik Sneaker</a></h5>
-                  <div class="products-list__product-ratings">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                  <div class="products-list__product-sum">
-                    <span class="products-list__product-price">$30.00</span>
-                  </div>
-                </div>
-              </li>
-              <li class="products-list__item">
-                <figure class="products-list__product-thumb">
-                  <a href="#">
-                    <img src="assets/images/samples/cart-sm-3.jpg" alt="">
-                  </a>
-                </figure>
-                <div class="products-list__inner">
-                  <span class="products-list__product-cat">Sneakers</span>
-                  <h5 class="products-list__product-name"><a href="#">Aquarium Sneaker</a></h5>
-                  <div class="products-list__product-ratings">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star empty"></i>
-                    <i class="fa fa-star empty"></i>
-                  </div>
-                  <div class="products-list__product-sum">
-                    <span class="products-list__product-price">$26.00</span>
-                  </div>
-                </div>
-              </li>
-              <li class="products-list__item">
-                <figure class="products-list__product-thumb">
-                  <a href="#">
-                    <img src="assets/images/samples/cart-sm-6.jpg" alt="">
-                  </a>
-                </figure>
-                <div class="products-list__inner">
-                  <span class="products-list__product-cat">Shirts and Hoodies</span>
-                  <h5 class="products-list__product-name"><a href="#">The Sporting Shirt</a></h5>
-                  <div class="products-list__product-ratings">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star empty"></i>
-                  </div>
-                  <div class="products-list__product-sum">
-                    <span class="products-list__product-price">$40.00</span>
-                  </div>
-                </div>
-              </li>
+                </li>
+              <% end %>
             </ul>
           </div>
         </aside>
