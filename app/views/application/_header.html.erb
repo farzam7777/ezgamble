@@ -21,7 +21,11 @@
         <% if !user_signed_in? %>
           <li class="nav-account__item"><a href="<%= new_user_session_path %>">Login / Register</a></li>
         <% else %>
-          <li class="nav-account__item"> <%= image_tag current_user.image.url(:thumb), class: 'img-circle', style: 'width: 40px' %> </li>
+          <% if current_user.image.url.split('/')[-1] == "missing.png" %>
+            <li class="nav-account__item"> <%= image_tag 'images/samples/avatar-empty.png', class: 'img-circle', style: 'width: 40px' %> </li>
+          <% else %>
+            <li class="nav-account__item"> <%= image_tag current_user.image.url(:thumb), class: 'img-circle', style: 'width: 40px' %> </li>
+          <% end %>
           <li class="nav-account__item"> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
           <li class="nav-account__item"> <%= link_to current_user.email, '#' %> (Go to Profile) </li>
         <% end %>
