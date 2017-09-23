@@ -41,5 +41,8 @@ class SitesController < ApplicationController
     else
       redirect_to site_path(params[:id]), alert: 'You can give rating only once per type.'
     end
+    
+    @site = Site.find(params[:id])
+    @result = @site.get_site_avg_rating(@site)
   end
 end
