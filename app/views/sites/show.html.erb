@@ -102,7 +102,7 @@
               </div>
             </form>
           <% else %>
-            <p> Login to record your ratings. </p>
+            <p> <%= link_to 'Login', new_user_session_path %> to record your ratings. </p>
           <% end %>
           <footer class="product__footer">
             <!-- <a href="#" class="btn btn-default btn-single-icon product__wish"><i class="icon-heart"></i></a> -->
@@ -118,7 +118,7 @@
     
       <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified nav-product-tabs">
-        <li role="presentation" class="active"><a href="#tab-desciption" role="tab" data-toggle="tab"><small>Product</small>Full Description</a></li>
+        <li role="presentation" class="active"><a href="#tab-desciption" role="tab" data-toggle="tab"><small>Site</small>Full Description</a></li>
         <li role="presentation"><a href="#tab-reviews" role="tab" data-toggle="tab"><small>Sites</small>User Reviews <span id="top-reviews-count"> (<%= @site.reviews.count %>) </span> </a></li>
       </ul>
     
@@ -129,7 +129,7 @@
         <div role="tabpanel" class="tab-pane fade in active" id="tab-desciption">
         
           <header class="product-tabs__header">
-            <h2>Product Full Description</h2>
+            <h2>Site Full Description</h2>
           </header>
           
           <p> <%= @site.description %> </p>
@@ -156,19 +156,25 @@
           
           </section>
           
-          <section class="product-tabs__section">
-          
-            <header class="product-tabs__header">
-              <h2>Write a Review</h2>
-            </header>
+          <% if user_signed_in? %>
+            <section class="product-tabs__section">
             
-            <!-- Reviews Form -->
-            <%= render 'reviews/form' %> 
-            <!-- Reviews Form / End -->
-            
-          
-          </section>
-          
+              <header class="product-tabs__header">
+                <h2>Write a Review</h2>
+              </header>
+              
+              <!-- Reviews Form -->
+              <%= render 'reviews/form' %> 
+              <!-- Reviews Form / End -->
+              
+            </section>
+          <% else %>
+            <section class="product-tabs__section">
+              <header class="product-tabs__header">
+                <h4> <%= link_to 'Login', new_user_session_path %> to make a Review</h4>
+              </header>
+            </section>
+          <% end %>
     
         </div>
         <!-- Tab: Reviews / End -->

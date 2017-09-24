@@ -6,7 +6,8 @@ class Site < ApplicationRecord
   has_many :reviews
     
   has_attached_file :preview, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :preview, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :preview, content_type: /\Aimage\/.*\z/,
+  default_url: ActionController::Base.helpers.asset_path("missing_site.jpg")
   
   validates_presence_of :title
   validates_presence_of :link

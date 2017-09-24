@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   def index
-    @sites = Site.includes(:category).all.page(params[:page]).per(2)
+    @sites = Site.includes(:category).all.page(params[:page]).per(3)
   end
 
   def show

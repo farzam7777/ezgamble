@@ -3,7 +3,7 @@
     <header class="comment__header">
       <div class="comment__author">
         <figure class="comment__author-avatar">
-          <%= image_tag 'images/samples/avatar-10.jpg' %>
+          <%= image_tag review.user.image.url(:thumb) %>
         </figure>
         <div class="comment__author-info">
           <h5 class="comment__author-name"><%= review.user.email %></h5>

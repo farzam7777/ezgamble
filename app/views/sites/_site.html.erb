@@ -14,11 +14,12 @@
         <span class="product__category"> <%= site.category.title %> </span>
         <h2 class="product__title"><a href="<%= site_path(site) %>"> <%= site.title %> </a></h2>
         <div class="product__ratings">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star empty"></i>
+          <% site.rating.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+          <% (5 - site.rating).times do %>
+            <i class="fa fa-star empty"></i>
+          <% end %>
         </div>
       </div>
     </header>
