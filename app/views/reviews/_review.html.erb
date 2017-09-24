@@ -3,10 +3,14 @@
     <header class="comment__header">
       <div class="comment__author">
         <figure class="comment__author-avatar">
-          <%= image_tag review.user.image.url(:thumb) %>
+          <% if review.user.image.url.split('/')[-1] == "missing.png" %>
+            <%= image_tag 'images/samples/avatar-empty.png' %>
+          <% else %>
+            <%= image_tag review.user.image.url(:thumb) %>
+          <% end %>
         </figure>
         <div class="comment__author-info">
-          <h5 class="comment__author-name"><%= review.user.email %></h5>
+          <h5 class="comment__author-name"><%= review.user.username %></h5>
           <time class="comment__post-date" datetime="2016-08-23"><%= time_ago_in_words( review.created_at ) %> ago</time>
         </div>
       </div>

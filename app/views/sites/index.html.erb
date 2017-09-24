@@ -79,7 +79,7 @@
                   </figure>
                   <div class="products-list__inner">
                     <span class="products-list__product-cat"> <%= site.category.title %> </span>
-                    <h5 class="products-list__product-name"><a href="#"> <%= site.title %> </a></h5>
+                    <h5 class="products-list__product-name"><a href="<%= site_path(site) %>"> <%= site.title %> </a></h5>
                     <div class="products-list__product-ratings">
                       <% site.rating.times do %>
                         <i class="fa fa-star"></i>

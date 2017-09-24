@@ -37,4 +37,7 @@ ActiveAdmin.register Site do
     end
     active_admin_comments
   end
+  
+  filter :category
+  filter :title
 end
