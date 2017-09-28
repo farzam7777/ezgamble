@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
   end
   
   def destroy
+    authorize! :destroy, @review
     respond_to do |format|
       if @review.destroy
         format.html { redirect_to sites_path, notice: 'Review is deleted Successfully.' }

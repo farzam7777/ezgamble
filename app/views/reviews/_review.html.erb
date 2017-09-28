@@ -17,8 +17,10 @@
     </header>
     <div class="comment__body">
       <h4 class="comment__title"> <%= review.title %> </h4>
-       <p style="color: grey;"> <%= review.content %> </p>  
-       <p style="color: black"> <%= link_to 'Delete', review, method: :delete, remote: true %> </p>
+      <p style="color: grey;"> <%= review.content %> </p>
+      <% if can? :destroy, review %>
+        <p style="color: black"> <%= link_to 'Delete', review, method: :delete, remote: true %> </p>
+      <% end %>
     </div>
   </div> <hr style="margin-top: 0px !important">
 </li> 
